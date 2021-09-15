@@ -3,9 +3,18 @@ module.exports = {
   darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {},
+    fontFamily: {
+      'noto': ['"Noto Sans TC"', 'sans-serif'],
+      'sati': ['"Satisfy"', 'cursive']
+    }
   },
   variants: {
-    extend: {},
+    extend: {
+      borderWidth: ['hover'],
+      fontWeight: ['hover', 'focus'],
+      transform: ['hover'],
+      backgroundColor: ['odd', 'even']
+    },
   },
   plugins: [],
 }
