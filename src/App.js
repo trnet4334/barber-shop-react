@@ -1,25 +1,32 @@
-import Header from "./components/Header";
-import Service from "./components/Service";
-import Work from "./components/Work";
-import Testimonial from "./components/Testimonial";
-import Team from "./components/Team";
-import Pricing from "./components/Pricing";
+import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
-import News from "./components/News";
+import Home from "./pages/Home";
+import Reservation from "./pages/Reservation";
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route,
+    Link,
+    useParams
+} from "react-router-dom";
 import "./App.css";
 
 function App() {
   return (
-    <div className="App h-screen w-screen font-noto">
-        <Header/>
-        <Service/>
-        <Work/>
-        <Testimonial/>
-        <Team/>
-        <News/>
-        <Pricing/>
-        <Footer/>
-    </div>
+      <Router>
+          <div className="App h-screen w-screen font-noto">
+              <Navbar/>
+              <Switch>
+                  <Route exact path="/">
+                      <Home/>
+                  </Route>
+                  <Route path="/reservation">
+                      <Reservation/>
+                  </Route>
+              </Switch>
+              <Footer/>
+          </div>
+      </Router>
   );
 }
 
