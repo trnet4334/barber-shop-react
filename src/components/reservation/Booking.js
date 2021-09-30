@@ -1,8 +1,8 @@
 const Booking = () => {
     return (
-        <div className="flex flex-col w-1/2">
+        <div className="flex flex-col w-full">
             <label className="block flex items-center justify-start">
-                <span className="w-1/6 text-left">設計師</span>
+                <span className="w-1/3 text-center">設計師</span>
                 <select
                     type="text"
                     className="mt-3 block w-full rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0"
@@ -15,14 +15,14 @@ const Booking = () => {
                 </select>
             </label>
             <label className="block flex items-center justify-start">
-                <span className="w-1/6 text-left">日期</span>
+                <span className="w-1/3 text-center">日期</span>
                 <input
                     type="date"
                     className="mt-3 block w-full rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0"
                 />
             </label>
             <label className="block flex items-center justify-start">
-                <span className="w-1/6 text-left">時間</span>
+                <span className="w-1/3 text-center">時間</span>
                 <select
                     className="mt-3 block w-full rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0"
                 >
@@ -34,7 +34,7 @@ const Booking = () => {
                 </select>
             </label>
             <label className="block flex items-center justify-start">
-                <span className="w-1/6 text-left">服務項目</span>
+                <span className="w-1/3 text-center">服務項目</span>
                 <select
                     className="mt-3 block w-full rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0"
                 >
@@ -47,22 +47,22 @@ const Booking = () => {
                 </select>
             </label>
             <label className="block flex items-center justify-start">
-                <span className="w-1/6 text-left">姓名</span>
+                <span className="w-1/3 text-center">姓名</span>
                 <input
                     type="text"
                     className="mt-3 block w-full rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0"
                 />
             </label>
             <label className="block flex items-center justify-start">
-                <span className="w-1/6 text-left">手機號碼</span>
+                <span className="w-1/3 text-center">手機號碼</span>
                 <input
                     type="text"
                     className="mt-3 block w-full rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0"
                 />
             </label>
-            <p className="mt-3">請務必輸入正確手機號碼，才能收到相關連繫訊息，謝謝！</p>
+            <p className="mt-3 text-right">請務必輸入正確手機號碼，才能收到相關連繫訊息，謝謝！</p>
             <label className="block flex items-center justify-start">
-                <span className="w-1/6 text-left">備註</span>
+                <span className="w-1/3 text-center">備註</span>
                 <textarea
                     className="mt-3 block w-full rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0"
                 />

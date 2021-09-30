@@ -1,9 +1,13 @@
 module.exports = {
-  purge: ['./src/**/*.{js,jsx,ts,tsx}', './public/index.html'],
+  purge: ['./src/**/*.{js,jsx,ts,tsx}', './public/index.html', './src/components/*.{js,jsx}'],
   mode: 'jit',
   darkMode: false, // or 'media' or 'class'
   theme: {
-    extend: {},
+    extend: {
+      backgroundImage: {
+        'reservation-img': "url('./assets/images/reservation-img.jpeg')",
+      }
+    },
     fontFamily: {
       'noto': ['"Noto Sans TC"', 'sans-serif'],
       'sati': ['"Satisfy"', 'cursive']
