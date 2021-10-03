@@ -1,3 +1,5 @@
+import React from "react";
+
 const Order = () => {
     return (
         <div className="flex flex-col w-full">

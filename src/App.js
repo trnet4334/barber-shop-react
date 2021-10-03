@@ -1,7 +1,9 @@
+import React from "react";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Home from "./pages/Home";
 import Reservation from "./pages/Reservation";
+import Contact from "./pages/Contact";
 import {
     BrowserRouter as Router,
     Switch,

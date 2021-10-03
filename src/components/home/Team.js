@@ -1,21 +1,14 @@
+import React from "react";
+
 const Team = () => {
     return (
-        <div>
-            <h2 className="text-3xl my-5">設計師</h2>
-            <p className="text-center w-1/3 m-auto break-words mb-6">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus deleniti eveniet expedita, officia similique voluptas.</p>
+        <div className="w-screen h-auto min-h-screen bg-secondary flex flex-col items-center justify-center py-20">
+            <h2 className="text-4xl my-5 text-primary">我們的團隊</h2>
+            <p className="text-center w-1/3 m-auto break-words mb-16">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus deleniti eveniet expedita, officia similique voluptas.</p>
             <div className="flex items-center justify-center">
-                <div>
-                    <div className="w-80 h-80 bg-black mx-4"/>
-                    <p>John Doe</p>
-                </div>
-                <div>
-                    <div className="w-80 h-80 bg-black mx-4"/>
-                    <p>John Doe</p>
-                </div>
-                <div>
-                    <div className="w-80 h-80 bg-black mx-4"/>
-                    <p>John Doe</p>
-                </div>
+                <div className="w-[400px] h-[500px] bg-barber-img-1 bg-cover mx-2.5"/>
+                <div className="w-[400px] h-[500px] bg-barber-img-3 bg-cover mx-2.5"/>
+                <div className="w-[400px] h-[500px] bg-barber-img-2 bg-cover mx-2.5"/>
             </div>
         </div>
     )

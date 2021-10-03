@@ -1,3 +1,5 @@
+import React from "react";
+
 const Booking = () => {
     return (
         <div className="flex flex-col w-full">

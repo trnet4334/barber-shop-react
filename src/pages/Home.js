@@ -1,3 +1,4 @@
+import React from "react";
 import Header from "../components/home/Header";
 import Protocol from '../components/home/Protocol';
 import Service from "../components/home/Service";
@@ -11,13 +12,13 @@ const Home = () => {
     return (
         <div>
             <Header/>
-            <Protocol/>
             <Service/>
+            <Protocol/>
             <Work/>
-            <Testimonial/>
-            <Team/>
-            <News/>
             <Pricing/>
+            <Team/>
+            <Testimonial/>
+            <News/>
         </div>
     )
 }
