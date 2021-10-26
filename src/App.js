@@ -3,6 +3,11 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Home from "./pages/Home";
 import Reservation from "./pages/Reservation";
+import About from "./pages/About";
+import Team from "./pages/Team";
+import Blog from "./pages/Blog";
+import Gallery from "./pages/Gallery";
+import NotFound from "./pages/NotFound";
 import Contact from "./pages/Contact";
 import {
     BrowserRouter as Router,
@@ -22,8 +27,23 @@ function App() {
                   <Route exact path="/">
                       <Home/>
                   </Route>
+                  <Route path="/about">
+                      <About/>
+                  </Route>
+                  <Route path="/team">
+                      <Team/>
+                  </Route>
+                  <Route path="/gallery">
+                      <Gallery/>
+                  </Route>
                   <Route path="/reservation">
                       <Reservation/>
+                  </Route>
+                  <Route path="/news">
+                      <Blog/>
+                  </Route>
+                  <Route path="*">
+                      <NotFound/>
                   </Route>
               </Switch>
               <Footer/>

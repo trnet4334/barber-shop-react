@@ -54,7 +54,7 @@ const Pricing = () => {
                     <i className="fas fa-cut fa-2x text-gray-300"/>
                 </div>
                 <p className="break-words text-left leading-7 text-gray-300">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur commodi deserunt magnam nobis quasi quis repellendus soluta ut. Adipisci aspernatur, dolorum facilis illo iure libero non pariatur perspiciatis placeat quae quisquam quod reprehenderit sapiente sequi, vero vitae voluptates.</p>
-                <button className="text-btn-text bg-btn-primary px-12 py-4 mt-6 hover:ring-2 hover:ring-btn-primary hover:bg-primary hover:text-secondary">閱讀更多</button>
+                <button className="btn-lg hover:bg-transparent mt-8">閱讀更多</button>
             </div>
             <div className="w-[40vw]">
                 <ul className="list-none text-left w-full">

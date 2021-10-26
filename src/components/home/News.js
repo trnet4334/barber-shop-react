@@ -1,22 +1,20 @@
 import React from "react";
+import NewsCard from "../utilities/NewsCard";
 
 const News = () => {
-    const post = {
-        'image': '',
-        'title': 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
-        'date': 'August 5, 2021',
-        'numOfComments': 0
-    }
-    const posts = [1, 2, 3].map(() =>
-        <div className="mx-2.5 w-[380px]">
-            <div className="w-[380px] h-[320px] bg-news-img-1 bg-cover cursor-pointer filter brightness-75 hover:brightness-150"/>
-            <h4 className="text-left font-medium text-xl w-[95%] py-4 break-all cursor-pointer hover:text-secondary">{post.title}</h4>
-            <div className="flex items-center font-light">
-                <i className="fas fa-calendar-day mr-1"/>
-                <p className="mr-8">{post.date}</p>
-                <p className="hover:text-secondary cursor-pointer">{post.numOfComments} Comments</p>
-            </div>
-        </div>
+    const blogPost = [
+        { title: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.', author: 'Ryan Chen', date: '06.12.2021', image: 'bg-news-img-1', postId: '001' },
+        { title: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.', author: 'Kelly Wu', date: '05.14.2021', image: 'bg-news-img-2', postId: '002'  },
+        { title: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.', author: 'Cindy Wang', date: '04.10.2021', image: 'bg-news-img-3', postId: '003' },
+        { title: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.', author: 'Cindy Wang', date: '03.03.2021', image: 'bg-news-img-1', postId: '004' },
+        { title: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.', author: 'Tiffany Chiu', date: '02.22.2021', image: 'bg-news-img-2', postId: '005' },
+        { title: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.', author: 'Ryan Chen', date: '01.08.2021', image: 'bg-news-img-3', postId: '006' },
+    ]
+    const posts = blogPost.splice(0, 3).map((item) =>
+        <NewsCard
+            source={item}
+            key={item.postId}
+        />
     )
 
     return (

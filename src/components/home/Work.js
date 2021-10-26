@@ -12,12 +12,7 @@ const Work = () => {
         >
             <div className="w-full h-2/3 flex flex-col items-center justify-center">
                 <h2 className="text-4xl text-btn-text py-10">探索我們的工作</h2>
-                <div
-                    className=
-                        "w-16 h-16 rounded-full bg-secondary text-secondary flex items-center justify-center
-                        hover:bg-btn-primary hover:text-btn-text cursor-pointer
-                        animate-ripple transition duration-700 ease-linear"
-                >
+                <div className="btn-ripple">
                     <i className="fas fa-play"/>
                 </div>
             </div>

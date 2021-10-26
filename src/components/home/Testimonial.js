@@ -26,7 +26,7 @@ const Testimonial = () => {
             <div className="w-1/2 p-16 flex flex-col items-start justify-center bg-secondary">
                 <h2 className="text-4xl my-5 text-primary">客戶回饋</h2>
                 <p className="w-2/3 break-words text-left my-3.5 text-primary leading-relaxed">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus impedit ipsam libero odit quia sit. Assumenda eaque eveniet facere numquam provident quibusdam sed ut vero voluptates? Commodi dicta ipsa rem?</p>
-                <button className="text-btn-text bg-btn-primary px-12 py-4 mt-6 hover:ring-2 hover:ring-btn-primary hover:bg-transparent hover:text-secondary">
+                <button className="btn-lg hover:bg-transparent">
                     <a href="#">閱讀更多</a>
                 </button>
             </div>

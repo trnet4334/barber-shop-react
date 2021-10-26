@@ -1,35 +1,69 @@
 const path = require("path");
-const HtmlWebPackPlugin = require("html-webpack-plugin");
+const {HotModuleReplacementPlugin} = require("webpack")
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
-module.exports = {
-    entry: "/src/index.js",
-    output: {
-        path: path.resolve(__dirname, "dist"),
-    },
-    module: {
-        rules: [
-            {
-                test: /\.(js|jsx)$/,
-                exclude: /node_modules/,
-                use: {
-                    loader: "babel-loader",
-                    options: {
-                        presets: ["@babel/preset-env", "@babel/preset-react"],
+module.exports = (env, argv) => {
+    return {
+        entry: path.join(__dirname, 'src', 'index.js'),
+        output: {
+            path: path.resolve(__dirname, 'dist'),
+            filename: 'bundle.js'
+        },
+        module: {
+            rules: [
+                {
+                    test: /\.(js|jsx)$/,
+                    include: path.resolve(__dirname, 'src'),
+                    exclude: /node_modules/,
+                    use: {
+                        loader: "babel-loader",
+                        options: {
+                            presets: ["@babel/preset-env", "@babel/preset-react"],
+                        },
                     },
                 },
-            },
-        ],
-    },
-    plugins: [
-        new HtmlWebPackPlugin({
-            template: "./src/index.html",
-        }),
-    ],
-    devServer: {
-        static: {
-            directory: path.join(__dirname, 'public'),
+                {
+                    test: /\.css$/i,
+                    include: path.resolve(__dirname, 'src'),
+                    exclude: /node_modules/,
+                    use: [
+                        'style-loader',
+                        {
+                            loader: 'css-loader',
+                            option: {
+                                importLoaders: 1
+                            }
+                        },
+                        {
+                            loader: MiniCssExtractPlugin.loader,
+                            option: {
+                                hmr: argv.mode === 'development'
+                            }
+                        },
+
+                        'postcss-loader'
+                    ]
+                }
+            ],
         },
-        compress: true,
-        port: 9000,
+        plugins: [
+            new MiniCssExtractPlugin({
+                filename: '[name].bundle.css',
+                chunkFilename: '[id].css'
+            }),
+            new HotModuleReplacementPlugin(),
+        ],
+        devServer: {
+            open: true,
+            clientLogLevel: 'silent',
+            contentBase: './dist',
+            historyApiFallback: true,
+            hot: true,
+            // static: {
+            //     directory: path.join(__dirname, 'public'),
+            // },
+            // compress: true,
+            port: 9000,
+        }
     }
 };

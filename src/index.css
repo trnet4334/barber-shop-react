@@ -2,3 +2,14 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@tailwind screens;
+
+.btn-lg {
+    @apply px-12 py-3.5 text-btn-text bg-btn-primary hover:ring-2 hover:ring-btn-primary hover:text-secondary;
+}
+
+.btn-ripple {
+    @apply w-16 h-16 rounded-full bg-secondary text-secondary flex items-center justify-center
+           hover:bg-btn-primary hover:text-btn-text cursor-pointer
+           animate-ripple transition duration-700 ease-linear;
+}
