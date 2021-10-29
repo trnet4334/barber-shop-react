@@ -2,7 +2,7 @@ import React from "react";
 
 const Testimonial = () => {
     const clientCard = [1, 2, 3, 4].map((index) =>
-        <div className="bg-white w-60 h-60 flex flex-col items-center justify-center px-8 text-primary">
+        <div className="bg-white w-60 h-60 flex flex-col items-center justify-center px-8 text-primary" key={index}>
             <p className="break-all font-light text-left mb-2">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate, excepturi.</p>
             <div className="inline-flex mt-3 w-full">
                 <div className="bg-black rounded-full w-16 h-16"/>

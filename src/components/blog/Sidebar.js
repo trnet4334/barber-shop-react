@@ -1,16 +1,25 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import {blogPosts} from "../../common/pageContent";
 
 const Sidebar = () => {
+    const [ posts, setPosts ] = useState([])
+    useEffect(() => {
+        setPosts([...blogPosts.slice(0, 3)])
+    }, [])
+
     return (
         <div className="w-full h-full">
             <div className="w-full h-auto p-10 divide-y divide-secondary bg-primary text-btn-text">
                 <h2 className="text-2xl pb-5">最新文章</h2>
                 <div className="w-full">
                     <div className="mt-8">
-                        {[1, 2, 3].map(() =>
-                            <div className="h-[75px] w-full bg-btn-primary mt-3 flex items-center justify-center py-0.5 px-3.5">
+                        {posts.map((item) =>
+                            <div
+                                className="h-[75px] w-full mt-3 flex bg-btn-primary text-base items-center justify-start py-0.5 px-3.5 cursor-pointer overflow-hidden hover:text-xl"
+                                key={item.postId}
+                            >
                                 <i className="fas fa-angle-right fa-2x text-btn-text"/>
-                                <p className="text-btn-text font-light break-all text-sm text-left ml-2">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque quisquam rem reprehenderit?</p>
+                                <p className="text-btn-text font-light break-all text-left ml-2">{item.title}</p>
                             </div>
                         )}
                     </div>

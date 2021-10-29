@@ -8,48 +8,45 @@ import Team from "./pages/Team";
 import Blog from "./pages/Blog";
 import Gallery from "./pages/Gallery";
 import NotFound from "./pages/NotFound";
-import Contact from "./pages/Contact";
 import {
     BrowserRouter as Router,
     Switch,
-    Route,
-    Link,
-    useParams
+    Route
 } from "react-router-dom";
 import "./App.css";
 
 function App() {
-  return (
-      <Router>
-          <div className="App h-screen w-screen font-noto">
-              <Navbar/>
-              <Switch>
-                  <Route exact path="/">
-                      <Home/>
-                  </Route>
-                  <Route path="/about">
-                      <About/>
-                  </Route>
-                  <Route path="/team">
-                      <Team/>
-                  </Route>
-                  <Route path="/gallery">
-                      <Gallery/>
-                  </Route>
-                  <Route path="/reservation">
-                      <Reservation/>
-                  </Route>
-                  <Route path="/news">
-                      <Blog/>
-                  </Route>
-                  <Route path="*">
-                      <NotFound/>
-                  </Route>
-              </Switch>
-              <Footer/>
+    return (
+        <Router>
+            <div className="App h-screen w-screen font-noto">
+                <Navbar/>
+                <Switch>
+                    <Route exact path="/">
+                        <Home/>
+                    </Route>
+                    <Route path="/about">
+                        <About/>
+                    </Route>
+                    <Route path="/team">
+                        <Team/>
+                    </Route>
+                    <Route path="/gallery">
+                        <Gallery/>
+                    </Route>
+                    <Route path="/reservation">
+                        <Reservation/>
+                    </Route>
+                    <Route path="/news">
+                        <Blog/>
+                    </Route>
+                    <Route path="*">
+                        <NotFound/>
+                    </Route>
+                </Switch>
+                <Footer/>
           </div>
       </Router>
-  );
+    );
 }
 
 export default App;

@@ -3,6 +3,7 @@ import {Link} from "react-router-dom";
 import Modal from "../components/Modal";
 
 const Footer = () => {
+    const [ isModalOpen, setModalOpen ] = useState(false)
     const Title = () => (
         <h3 className="text-3xl font-medium text-primary">
             預約查詢
@@ -57,7 +58,9 @@ const Footer = () => {
             </button>
             <button
                 className="text-primary background-transparent font-medium uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1"
-                type="button">
+                type="button"
+                onClick={() => setModalOpen(false)}
+            >
                 關閉
             </button>
         </React.Fragment>
@@ -71,9 +74,6 @@ const Footer = () => {
             behavior: "smooth"
         })
     }
-
-    const [ modalOpen, setModalOpen ] = useState(false)
-    console.log(modalOpen)
 
     return (
         <footer className="w-full h-auto bg-primary flex flex-col justify-between">
@@ -140,7 +140,7 @@ const Footer = () => {
                         <button
                             className="bg-btn-primary py-2.5 px-3 rounded-tr-full rounded-br-full"
                         >
-                            SUBSCRIBE
+                            訂閱
                         </button>
                     </div>
                 </div>
@@ -153,6 +153,7 @@ const Footer = () => {
                 content={<Content/>}
                 result={<Result/>}
                 buttons={<Buttons/>}
+                isOpened={isModalOpen}
             />
         </footer>
     )

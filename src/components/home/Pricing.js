@@ -1,37 +1,13 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import {servicePrice} from "../../common/pageContent";
 
 const Pricing = () => {
-    const services = [
-        {
-            name: '造型剪髮',
-            price: 700
-        },
-        {
-            name: '學生剪髮（憑學生證）',
-            price: 550
-        },
-        {
-            name: '經典寸頭',
-            price: 400
-        },
-        {
-            name: '染髮',
-            price: 1600
-        },
-        {
-            name: '燙髮',
-            price: 1600
-        },
-        {
-            name: '頭皮保養',
-            price: 1000
-        },
-        {
-            name: '專業修鬍',
-            price: 300
-        }
-    ]
-    const serviceItems = services.map((service, index) =>
+    const [price, setPrice] = useState([])
+    useEffect(() => {
+        setPrice([...servicePrice])
+    }, [])
+
+    const serviceItems = price.map((service, index) =>
         <li key={index}
             className="text-xl text-gray-300 leading-loose odd:bg-list-item px-8 py-5"
         >
