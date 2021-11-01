@@ -8,36 +8,40 @@ const Pricing = () => {
     }, [])
 
     const serviceItems = price.map((service, index) =>
-        <li key={index}
-            className="text-xl text-gray-300 leading-loose odd:bg-list-item px-8 py-5"
-        >
-            <div className=" flex justify-between items-center mb-7">
-                <span className="text-xl">{service.name}</span>
-                <div className="inline-flex">
-                    <div className="border-b-2 border-dotted border-secondary w-24 -translate-y-2.5 mr-1"/>
-                    <span className="text-base text-secondary">${service.price}</span>
-                </div>
-            </div>
-            <p className="text-sm">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit, sequi.</p>
-        </li>
+        <ul className="list-none text-left w-[85vw] lg:w-[40vw] mb-5">
+            <h4 className="flex items-end text-secondary text-xl md:text-2xl mb-4 pb-3 border-b-[0.1px] border-gray-600">
+                <span>{service.category}</span>
+                <span className="text-lg text-gray-300 font-light ml-3">{service.translation}</span>
+            </h4>
+            {
+                service.detail.map((item) =>
+                    <li key={index}
+                        className="text-xl text-btn-text leading-loose odd:bg-list-item px-8 py-1.5"
+                    >
+                        <div className=" flex justify-between items-center mb-1">
+                            <span className="text-base md:text-lg">{item.name}</span>
+                            <div className="inline-flex">
+                                <div className="border-b-2 border-dotted border-secondary w-12 md:w-24 -translate-y-2.5 mr-1"/>
+                                <span className="text-sm md:text-base text-secondary">${item.price}</span>
+                            </div>
+                        </div>
+                        <p className="text-sm md:text-base font-light text-gray-400">{item.translation}</p>
+                    </li>
+                )
+            }
+        </ul>
     )
 
     return (
-        <div className="flex items-center justify-center bg-primary w-screen h-auto min-h-screen font-noto py-28">
-            <div className="mx-16 w-[30vw]">
-                <div className="flex my-8 items-center">
-                    <h2 className="text-3xl text-gray-300 text-left mr-3">價目</h2>
-                    <i className="fas fa-cut fa-2x text-gray-300"/>
-                </div>
-                <p className="break-words text-left leading-7 text-gray-300">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur commodi deserunt magnam nobis quasi quis repellendus soluta ut. Adipisci aspernatur, dolorum facilis illo iure libero non pariatur perspiciatis placeat quae quisquam quod reprehenderit sapiente sequi, vero vitae voluptates.</p>
-                <button className="btn-lg hover:bg-transparent mt-8">閱讀更多</button>
+        <section className="bg-primary max-w-screen h-auto min-h-screen font-noto px-10 py-12 overflow-hidden">
+            <div className="w-full flex mb-14 items-center justify-center">
+                <h2 className="text-3xl md:text-4xl text-btn-text text-center mr-3">價格說明</h2>
+                <i className="fas fa-cut fa-2x text-btn-text"/>
             </div>
-            <div className="w-[40vw]">
-                <ul className="list-none text-left w-full">
-                    {serviceItems}
-                </ul>
+            <div className="w-full flex flex-col lg:flex-wrap justify-start items-center lg:max-h-[850px]">
+                {serviceItems}
             </div>
-        </div>
+        </section>
     )
 }
 

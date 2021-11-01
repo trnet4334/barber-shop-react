@@ -6,7 +6,7 @@ const MemberCard = (props) => {
     const memberImage = props.image
 
     return (
-        <div className={ size === 'lg' ? 'w-1/4 h-[500px] mx-2.5' : 'w-[325px] h-[400px] mx-2.5 my-3.5' }>
+        <div className={ size === 'lg' ? 'w-[325px] h-[450px] m-auto lg:mx-2.5 mb-8' : 'w-[300px] h-[400px] lg:mx-2.5 my-3.5' }>
             <div className="flex relative w-full h-full">
                 <div role="img" alt={memberName} className={`absolute inset-0 w-full h-full bg-cover bg-center ${memberImage}`}/>
                 <div

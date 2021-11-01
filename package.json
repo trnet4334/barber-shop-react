@@ -45,6 +45,7 @@
   },
   "devDependencies": {
     "autoprefixer": "^9.8.6",
+    "axios": "^0.24.0",
     "blurhash": "^1.1.4",
     "postcss": "^7.0.36",
     "prettier": "^2.3.2",

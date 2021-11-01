@@ -4,7 +4,6 @@ import Protocol from '../components/home/Protocol';
 import Service from "../components/home/Service";
 import Work from "../components/home/Work";
 import Testimonial from "../components/home/Testimonial";
-import Team from "../components/home/Team";
 import Pricing from "../components/home/Pricing";
 import News from "../components/home/News";
 
@@ -14,9 +13,8 @@ const Home = () => {
             <Header/>
             <Service/>
             <Protocol/>
-            <Work/>
             <Pricing/>
-            <Team/>
+            <Work/>
             <Testimonial/>
             <News/>
         </div>

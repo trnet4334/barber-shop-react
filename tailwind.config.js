@@ -4,6 +4,16 @@ module.exports = {
   darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {
+      screens: {
+        'xs': '480px',
+        'xs-max': {'max': '479px'},
+        'xs-r': {'min': '480px', 'max': '639px'},
+        'sm-r': {'min': '640px', 'max': '767px'},
+        'md-r': {'min': '768px', 'max': '1023px'},
+        'lg-r': {'min': '1024px', 'max': '1279px'},
+        'xl-r': {'min': '1280px', 'max': '1535px'},
+        '2xl-r': {'min': '1536px'},
+      },
       backgroundImage: {
         'background-img': "url('./assets/images/background-img.png')",
         'background-img-2': "url('./assets/images/background-img-2.png')",

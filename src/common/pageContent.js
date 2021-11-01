@@ -1,32 +1,32 @@
 // Content for protocol component in home page
 export const protocolList = [
     {
-        'logo': 'fas fa-spray-can fa-3x',
+        'logo': 'fas fa-spray-can fa-2x md:fa-3x',
         'title': '定期清潔消毒',
         'detail': 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.'
     },
     {
-        'logo': 'fas fa-thermometer fa-3x',
+        'logo': 'fas fa-thermometer fa-2x md:fa-3x',
         'title': '固定量測溫度',
         'detail': 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.'
     },
     {
-        'logo': 'fas fa-broom fa-3x',
+        'logo': 'fas fa-broom fa-2x md:fa-3x',
         'title': '乾淨舒適的空間',
         'detail': 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.'
     },
     {
-        'logo': 'fas fa-users fa-3x',
+        'logo': 'fas fa-users fa-2x md:fa-3x',
         'title': '最專業的團隊',
         'detail': 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.'
     },
     {
-        'logo': 'fas fa-toolbox fa-3x',
+        'logo': 'fas fa-toolbox fa-2x md:fa-3x',
         'title': '最棒的設備',
         'detail': 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.'
     },
     {
-        'logo': 'far fa-comment fa-3x',
+        'logo': 'far fa-comment fa-2x md:fa-3x',
         'title': '優良的回饋',
         'detail': 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.'
     }
@@ -51,38 +51,74 @@ export const progressBarValue = [
 
 // Content for service price component in home page
 export const servicePrice = [
-    { name: '造型剪髮', price: 700 },
-    { name: '學生剪髮（憑學生證）', price: 550 },
-    { name: '經典寸頭', price: 400 },
-    { name: '染髮', price: 1600 },
-    { name: '燙髮', price: 1600},
-    { name: '頭皮保養', price: 1000 },
-    { name: '專業修鬍', price: 300 }
+    {
+        category: '剪髮',
+        translation: 'TRIM OFF',
+        detail: [
+            { name: '造型剪髮', translation: 'Classic Haircut', price: 700 },
+            { name: '學生剪髮（憑學生證）', translation: 'Student Haircut', price: 550 },
+            { name: '經典寸頭', translation: 'Classic Buzzcut', price: 400 },
+            { name: '髮型雕刻', translation: 'Carving', price: 500 },
+        ]
+    },
+    {
+        category: '染髮',
+        translation: 'COLOURING',
+        detail: [
+            { name: '全染', translation: 'Hair Coloring', price: 1600 },
+            { name: '洗色', translation: 'Bleach', price: 1800 },
+            { name: '設計染', translation: 'Design Coloring', price: 1750 }
+        ]
+    },
+    {
+        category: '護髮',
+        translation: 'TREATMENT',
+        detail: [
+            { name: '頭皮護理', translation: 'Scalp Treatment', price: 1000 },
+            { name: '受損髮修補', translation: 'Hair Treatment', price: 1000 },
+        ]
+    },
+    {
+        category: '修容',
+        translation: 'TRIMMING',
+        detail: [
+            { name: '雕塑修容', translation: 'Face Trim', price: 1000},
+            { name: '專業修鬍', translation: 'Beard Trim', price: 300 }
+        ]
+    },
+    {
+        category: '燙髮',
+        translation: 'PERMANENT',
+        detail: [
+            { name: '燙髮', translation: 'Hair Perming', price: 1600},
+            { name: '黑人頭造型燙', translation: 'Dreadlocks', price: 3200 }
+        ]
+    }
 ]
 
 // Content for service component in home page
 export const serviceList = [
     {
-        'logo': 'fas fa-cut fa-2x',
-        'class': 'row-start-1 row-span-2',
+        'logo': 'fas fa-cut fa-lg',
+        'class': 'row-start-1 row-span-2 mr-2',
         'title': '經典剪髮',
         'detail': 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque, provident!'
     },
     {
-        'logo': 'fas fa-spa fa-2x',
-        'class': 'row-start-3 row-span-2',
+        'logo': 'fas fa-spa fa-lg',
+        'class': 'row-start-3 row-span-2 mr-2',
         'title': '頭皮按摩',
         'detail': 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum, perferendis?'
     },
     {
-        'logo': 'fas fa-tint fa-2x',
-        'class': 'row-start-2 row-span-2',
+        'logo': 'fas fa-tint fa-lg',
+        'class': 'row-start-2 row-span-2 mr-2',
         'title': '染髮',
         'detail': 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex, nobis.'
     },
     {
-        'logo': 'fas fa-bacon fa-2x',
-        'class': 'row-start-4 row-span-2',
+        'logo': 'fas fa-bacon fa-lg',
+        'class': 'row-start-4 row-span-2 mr-2',
         'title': '修容',
         'detail': 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur, excepturi.'
     }
