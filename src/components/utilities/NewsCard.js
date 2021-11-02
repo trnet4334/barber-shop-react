@@ -2,7 +2,7 @@ import React from 'react';
 
 const NewsCard = (props) => {
     return (
-        <div className="m-auto mt-0 mb-8 xl:mx-2.5 w-[375px]">
+        <div className="m-auto mt-0 mb-5 md-r:m-auto xl:mx-2.5 xs-max:w-[300px] md-r:w-[335px] w-[375px]">
             <div
                 role="img"
                 alt={props.source.title}

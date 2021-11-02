@@ -6,6 +6,7 @@
 
 .btn-lg {
     @apply px-12 py-3.5 text-btn-text bg-btn-primary hover:ring-2 hover:ring-btn-primary hover:text-secondary;
+    @apply xs-max:px-6;
 }
 
 .btn-ripple {
@@ -13,3 +14,8 @@
            hover:bg-btn-primary hover:text-btn-text cursor-pointer
            animate-ripple transition duration-700 ease-linear;
 }
+
+.gallery-bg {
+    @apply bg-cover bg-top filter brightness-[0.3] hover:brightness-110;
+}
+

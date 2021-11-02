@@ -14,6 +14,9 @@ module.exports = {
         'xl-r': {'min': '1280px', 'max': '1535px'},
         '2xl-r': {'min': '1536px'},
       },
+      listStyleType: {
+        'disclosure-closed': 'disclosure-closed',
+      },
       backgroundImage: {
         'background-img': "url('./assets/images/background-img.png')",
         'background-img-2': "url('./assets/images/background-img-2.png')",

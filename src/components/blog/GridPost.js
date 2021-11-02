@@ -9,7 +9,7 @@ const GridPost = () => {
     }, [])
 
     return (
-        <div className="grid grid-cols-2 gap-x-0 gap-y-10 place-content-center">
+        <div className="grid md:grid-cols-2 gap-x-0 gap-y-10">
             {
                 posts.map((item) =>
                     <NewsCard

@@ -7,6 +7,7 @@ import About from "./pages/About";
 import Team from "./pages/Team";
 import Blog from "./pages/Blog";
 import Gallery from "./pages/Gallery";
+import Sitemap from "./pages/Sitemap";
 import NotFound from "./pages/NotFound";
 import {
     BrowserRouter as Router,
@@ -38,6 +39,9 @@ function App() {
                     </Route>
                     <Route path="/news">
                         <Blog/>
+                    </Route>
+                    <Route path="/sitemap">
+                        <Sitemap/>
                     </Route>
                     <Route path="*">
                         <NotFound/>
