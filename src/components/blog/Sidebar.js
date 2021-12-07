@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import {blogPosts} from "../../common/pageContent";
+import {Link} from "react-router-dom";
 
 const Sidebar = () => {
     const [ posts, setPosts ] = useState([])
@@ -15,11 +16,13 @@ const Sidebar = () => {
                         <div className="mt-8">
                             {posts.map((item) =>
                                 <div
-                                    className="h-[75px] w-full mt-3 flex bg-btn-primary text-base items-center justify-start py-0.5 px-3.5 cursor-pointer overflow-hidden hover:text-xl"
+                                    className="h-[75px] w-full mt-3 flex bg-btn-primary text-base items-center justify-start py-0.5 px-3.5 cursor-pointer overflow-hidden hover:text-lg"
                                     key={item.postId}
                                 >
                                     <i className="fas fa-angle-right fa-2x text-btn-text"/>
-                                    <p className="text-btn-text font-light break-all text-left ml-2">{item.title}</p>
+                                    <p className="text-btn-text font-light break-all text-left ml-2">
+                                      <Link  className="no-underline" to={`/news/${item.postId}`}>{item.title}</Link>
+                                    </p>
                                 </div>
                             )}
                         </div>

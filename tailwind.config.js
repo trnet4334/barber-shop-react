@@ -14,6 +14,13 @@ module.exports = {
         'xl-r': {'min': '1280px', 'max': '1535px'},
         '2xl-r': {'min': '1536px'},
       },
+      colors: {
+        'primary': '#21313D',
+        'secondary-dark': '#C7780F',
+        'secondary-mild': '#F9ECDB',
+        'secondary-light': '#FFFBF5',
+        'dark': '#202E38'
+      },
       listStyleType: {
         'disclosure-closed': 'disclosure-closed',
       },
@@ -67,13 +74,11 @@ module.exports = {
         'gallery-img-10': "url('./assets/images/gallery-img-10.jpeg')",
       },
       backgroundColor: {
-        'primary': '#21313D',
         'secondary': '#FFFBF5',
         'btn-primary': '#C7780F',
         'list-item': '#202E38'
       },
       textColor: {
-        'primary': '#21313D',
         'secondary': '#C7780F',
         'btn-text': '#F9ECDB',
       },
@@ -92,10 +97,16 @@ module.exports = {
         ripple: {
           '0%': { boxShadow: '0 0 0 0 rgba(199, 120, 15, 0.4), 0 0 0 1px rgba(199, 120, 15, 0.4), 0 0 0 3px rgba(199, 120, 15, 0.4), 0 0 0 5px rgba(199, 120, 15, 0.4)' },
           '100%': { boxShadow: '0 0 0 0 rgba(199, 120, 15, 0.4), 0 0 0 4px rgba(199, 120, 15, 0.4), 0 0 0 15px rgba(199, 120, 15, 0), 0 0 0 20px rgba(199, 120, 15, 0)' }
+        },
+        imageLoading: {
+          '0%' : { backgroundColor: '#fff' },
+          '50%' : { backgroundColor: '#ccc' },
+          '100%' : { backgroundColor: '#fff' }
         }
       },
       animation: {
         'ripple': 'ripple 1.5s linear infinite',
+        'imageLoading': 'imageLoading 1.5s linear infinite',
       }
     },
     fontFamily: {

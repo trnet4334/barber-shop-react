@@ -7,15 +7,15 @@ const Pricing = () => {
         setPrice([...servicePrice])
     }, [])
 
-    const serviceItems = price.map((service, index) =>
+    const serviceItems = price.map((service) =>
         <ul className="list-none text-left w-[85vw] lg:w-[40vw] mb-5">
             <h4 className="flex items-end text-secondary text-xl md:text-2xl mb-4 pb-3 border-b-[0.1px] border-gray-600">
                 <span>{service.category}</span>
                 <span className="text-lg text-gray-300 font-light ml-3">{service.translation}</span>
             </h4>
             {
-                service.detail.map((item) =>
-                    <li key={index}
+                service.detail.map((item, index) =>
+                    <li key={item.name+index}
                         className="text-xl text-btn-text leading-loose odd:bg-list-item px-8 py-1.5"
                     >
                         <div className=" flex justify-between items-center mb-1">
