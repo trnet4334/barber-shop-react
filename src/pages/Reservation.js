@@ -8,7 +8,7 @@ const Reservation = () => {
     <section
       className=
         "w-screen flex flex-col md:flex-row pt-32 pb-20 items-center justify-center
-        bg-background-img-2 bg-cover bg-secondary text-primary">
+        bg-background-img-2 bg-cover bg-secondary-light text-primary">
       <Image
         alternate='Reservation Image'
         source='bg-reservation-img'
@@ -19,7 +19,7 @@ const Reservation = () => {
       />
       <div
         className="divide-y h-auto xs-max:w-[90vw] w-4/5 lg:w-2/5 mx-10 px-8 py-6 bg-primary flex flex-col items-center justify-start shadow-2xl rounded-md">
-        <h1 className="w-full h-full text-secondary pb-5">
+        <h1 className="w-full h-full text-secondary-dark pb-5">
           <span className="text-3xl py-3 px-6">
             線上預約
           </span>

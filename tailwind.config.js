@@ -73,26 +73,6 @@ module.exports = {
         'gallery-img-9': "url('./assets/images/gallery-img-9.jpeg')",
         'gallery-img-10': "url('./assets/images/gallery-img-10.jpeg')",
       },
-      backgroundColor: {
-        'secondary': '#FFFBF5',
-        'btn-primary': '#C7780F',
-        'list-item': '#202E38'
-      },
-      textColor: {
-        'secondary': '#C7780F',
-        'btn-text': '#F9ECDB',
-      },
-      ringColor: {
-        'btn-primary': '#C7780F',
-        'btn-secondary': '#FFFBF5',
-      },
-      borderColor: {
-        'secondary': '#C7780F',
-      },
-      divideColor: {
-        'primary': '#F9ECDB',
-        'secondary': '#C7780F',
-      },
       keyframes: {
         ripple: {
           '0%': { boxShadow: '0 0 0 0 rgba(199, 120, 15, 0.4), 0 0 0 1px rgba(199, 120, 15, 0.4), 0 0 0 3px rgba(199, 120, 15, 0.4), 0 0 0 5px rgba(199, 120, 15, 0.4)' },

@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import Home from "../pages/Home";
 import Reservation from "../pages/Reservation";
 import About from "../pages/About";

@@ -13,7 +13,7 @@ const Image = (props) => {
       <LazyLoad
         height='100%'
         className="w-full h-full absolute left-0"
-        offset={[-200, 0]}
+        offset={[-125, 0]}
         placeholder={<ImgPlaceholder/>}
         debounce={50}
       >

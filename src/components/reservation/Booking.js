@@ -6,52 +6,67 @@ const Booking = () => {
   return (
     <div className="flex flex-col w-full text-secondary-mild pt-5">
       <label className="mt-3 block flex items-center justify-start">
-        <span className="min-w-[90px] text-left">設計師</span>
+        <span className="min-w-[100px] text-left">設計師</span>
         <select
           type="text"
           className="block w-full text-primary rounded-md bg-gray-100 border-transparent focus:border-secondary-dark focus:bg-secondary-light focus:ring-0"
         >
-          {stylists.map((item) =>
-            <option value={item}>{item}</option>
+          {stylists.map((item, index) =>
+            <option
+              value={item}
+              key={item + index}
+            >
+              {item}
+            </option>
           )}
         </select>
       </label>
       <label className="mt-3 block flex items-center justify-start">
-        <span className="min-w-[90px] text-left">日期</span>
+        <span className="min-w-[100px] text-left">日期</span>
         <input
           type="date"
           className="block w-full text-primary rounded-md bg-gray-100 border-transparent focus:border-secondary-dark focus:bg-secondary-light focus:ring-0"
         />
       </label>
       <label className="mt-3 block flex items-center justify-start">
-        <span className="min-w-[90px] text-left">時間</span>
+        <span className="min-w-[100px] text-left">時間</span>
         <select
           className="block w-full text-primary rounded-md bg-gray-100 border-transparent focus:border-secondary-dark focus:bg-secondary-light focus:ring-0"
         >
           {scheduleTime.map((item) =>
-            <option value={item.value}>{item.time}</option>
+            <option
+              value={item.value}
+              key={item.value}
+            >
+              {item.time}
+            </option>
           )}
         </select>
       </label>
       <label className="mt-3 block flex items-center justify-start">
-        <span className="min-w-[90px] text-left">服務項目</span>
+        <span className="min-w-[100px] text-left">服務項目</span>
         <select
           className="block w-full text-primary rounded-md bg-gray-100 border-transparent focus:border-secondary-dark focus:bg-secondary-light focus:ring-0"
         >
           {scheduleService.map((item) =>
-            <option value={item.translation}>{item.name}</option>
+            <option
+              value={item.translation}
+              key={item.translation + item.price}
+            >
+              {item.name}
+            </option>
           )}
         </select>
       </label>
       <label className="mt-3 block flex items-center justify-start">
-        <span className="min-w-[90px] text-left">姓名</span>
+        <span className="min-w-[100px] text-left">姓名</span>
         <input
           type="text"
           className="block w-full text-primary rounded-md bg-gray-100 border-transparent focus:border-secondary-dark focus:bg-secondary-light focus:ring-0"
         />
       </label>
       <label className="mt-3 block flex items-center justify-start">
-        <span className="min-w-[90px] text-left">手機號碼</span>
+        <span className="min-w-[100px] text-left">手機號碼</span>
         <input
           type="text"
           className="block w-full text-primary rounded-md bg-gray-100 border-transparent focus:border-secondary-dark focus:bg-secondary-light focus:ring-0"
@@ -59,7 +74,7 @@ const Booking = () => {
       </label>
       <p className="mt-1 mb-3 text-right underline">請務必輸入正確手機號碼，才能收到相關連繫訊息，謝謝！</p>
       <label className="mt-3 block flex items-center justify-start">
-        <span className="min-w-[90px] text-left">備註</span>
+        <span className="min-w-[100px] text-left">備註</span>
         <textarea
           rows="5"
           className="block w-full text-primary rounded-md bg-gray-100 border-transparent focus:border-secondary-dark focus:bg-secondary-light focus:ring-0"

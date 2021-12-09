@@ -28,9 +28,9 @@ const SinglePost = () => {
       <div className="w-full flex items-center justify-start pt-5">
         <span className="font-light mr-3">Share:</span>
         <div className="flex">
-          <i className="fab fa-facebook fa-2x cursor-pointer pr-1 hover:fill-current hover:text-secondary"/>
-          <i className="fab fa-instagram fa-2x cursor-pointer px-1 hover:fill-current hover:text-secondary"/>
-          <i className="fab fa-line fa-2x cursor-pointer px-1 hover:fill-current hover:text-secondary"/>
+          <i className="fab fa-facebook fa-2x cursor-pointer pr-1 hover:fill-current hover:text-secondary-dark"/>
+          <i className="fab fa-instagram fa-2x cursor-pointer px-1 hover:fill-current hover:text-secondary-dark"/>
+          <i className="fab fa-line fa-2x cursor-pointer px-1 hover:fill-current hover:text-secondary-dark"/>
         </div>
       </div>
     </div>

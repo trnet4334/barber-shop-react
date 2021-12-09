@@ -4,9 +4,9 @@ import Image from "../components/utilities/Image";
 const Gallery = () => {
   return (
     <section
-      className="w-screen h-auto min-h-screen bg-secondary bg-background-img-2 bg-cover pt-24 px-12 text-primary">
+      className="w-screen h-auto min-h-screen bg-secondary-light bg-background-img-2 bg-cover pt-24 px-12 text-primary">
       <div className="pt-8">
-        <h4 className="text-base font-base text-center text-secondary">Gallery</h4>
+        <h4 className="text-base font-base text-center text-secondary-dark">Gallery</h4>
         <h1 className="text-center text-3xl md:text-4xl">作品集</h1>
       </div>
       <div className="w-full h-auto pb-16 pt-10 px-8 xs-max:px-0 xs-r:px-0 md:p-16 flex items-center justify-center">

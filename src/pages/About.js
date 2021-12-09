@@ -4,7 +4,7 @@ import Image from "../components/utilities/Image";
 const About = () => {
   return (
     <section
-      className="w-screen h-auto min-h-screen pt-32 md:pt-44 bg-secondary bg-background-img-2 bg-cover text-primary">
+      className="w-screen h-auto min-h-screen pt-32 md:pt-44 bg-secondary-light bg-background-img-2 bg-cover text-primary">
       <div className="w-full flex flex-col-reverse md:flex-row justify-around px-8 lg:px-20 pb-10">
         <Image
           alternate='About Image 1'
@@ -15,7 +15,7 @@ const About = () => {
           position='xs-r:m-auto sm-r:m-auto'
         />
         <div className="w-full md-r:w-1/2 lg-r:w-1/2 xl:w-2/5 text-left">
-          <h4 className="text-base font-base text-left text-secondary">Our Story</h4>
+          <h4 className="text-base font-base text-left text-secondary-dark">Our Story</h4>
           <h1 className="text-3xl md:text-4xl mb-14">我們的故事</h1>
           <h4 className="font-medium text-xl">改變生活的理髮品牌</h4>
           <p className="font-light break-all leading-relaxed my-3">Lorem ipsum dolor sit amet, consectetur adipisicing
@@ -26,11 +26,11 @@ const About = () => {
           <p className="font-light break-all leading-relaxed my-3">Lorem ipsum dolor sit amet, consectetur adipisicing
             elit. Exercitationem iure, maxime officia praesentium quos voluptatem. Deserunt doloribus numquam officiis
             optio quibusdam soluta voluptate. Amet culpa iusto provident qui repudiandae tempore.</p>
-          <button className="btn-lg hover:bg-transparent hover:text-secondary my-5">閱讀更多</button>
+          <button className="btn-lg hover:bg-transparent hover:text-secondary-dark my-5">閱讀更多</button>
         </div>
       </div>
       <div
-        className="w-full flex flex-col md:flex-row md:justify-around h-auto px-8 md:px-12 py-10 bg-primary text-btn-text">
+        className="w-full flex flex-col md:flex-row md:justify-around h-auto px-8 md:px-12 py-10 bg-primary text-secondary-mild">
         <div className="xs-max:w-full md-r:w-1/2 lg:w-2/5 text-left pb-10 md:pb-0">
           <h4 className="text-xl font-medium mt-5">NO. 1 Barber shop</h4>
           <p className="font-light my-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque blanditiis
@@ -38,7 +38,7 @@ const About = () => {
             voluptatibus. Alias facilis harum placeat.</p>
           <ul className="mt-12">
             <li className="flex items-start mb-10">
-              <i className="fas fa-user-tie fa-2x text-secondary mr-3"/>
+              <i className="fas fa-user-tie fa-2x text-secondary-dark mr-3"/>
               <div>
                 <h5 className="text-lg font-medium mb-3">豐富的經驗</h5>
                 <p className="font-light">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium harum id
@@ -46,7 +46,7 @@ const About = () => {
               </div>
             </li>
             <li className="flex items-start mb-10">
-              <i className="fas fa-wallet fa-2x text-secondary mr-3"/>
+              <i className="fas fa-wallet fa-2x text-secondary-dark mr-3"/>
               <div>
                 <h5 className="text-lg font-medium mb-3">平實的價格</h5>
                 <p className="font-light">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut consectetur cum,
@@ -54,7 +54,7 @@ const About = () => {
               </div>
             </li>
             <li className="flex items-start">
-              <i className="fas fa-shield-alt fa-2x text-secondary mr-3"/>
+              <i className="fas fa-shield-alt fa-2x text-secondary-dark mr-3"/>
               <div>
                 <h5 className="text-lg font-medium mb-3">穩定的品質</h5>
                 <p className="font-light">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est, fuga illo nisi

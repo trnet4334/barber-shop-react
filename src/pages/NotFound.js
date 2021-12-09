@@ -5,7 +5,7 @@ import Image from "../components/utilities/Image";
 const NotFound = () => {
   return (
     <section
-      className="w-full h-auto min-h-screen pt-24 px-8 pb-16 xs:p-24 bg-cover bg-background-img bg-secondary bg-fixed flex flex-col items-center">
+      className="w-full h-auto min-h-screen pt-24 px-8 pb-16 xs:p-24 bg-cover bg-background-img bg-secondary-light bg-fixed flex flex-col items-center">
       <Image
         alternate=''
         source='bg-404-img'
@@ -22,7 +22,7 @@ const NotFound = () => {
         >
           <Link to="/">回到首頁</Link>
         </button>
-        <p className="text-center text-primary cursor-pointer underline hover:text-secondary">
+        <p className="text-center text-primary cursor-pointer underline hover:text-secondary-dark">
           <Link to="/sitemap">或是，瀏覽我們的網站導覽</Link>
         </p>
       </div>

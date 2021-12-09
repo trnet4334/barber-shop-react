@@ -12,7 +12,7 @@ const Work = () => {
         before:w-full before:h-full before:z-[-1] before:brightness-[0.25]"
     >
       <div className="w-full h-[425px] flex flex-col items-center justify-center">
-        <h2 className="text-3xl md:text-4xl text-btn-text py-10">探索我們的工作</h2>
+        <h2 className="text-3xl md:text-4xl text-secondary-mild py-10">探索我們的工作</h2>
         <div className="btn-ripple">
           <i className="fas fa-play"/>
         </div>

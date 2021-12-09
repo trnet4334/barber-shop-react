@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import {Link} from "react-router-dom";
-import Modal from "../components/Modal";
+import Modal from "./utilities/Modal";
 
 const Footer = () => {
   const [isModalOpen, setIsModalOpen] = useState(false)
@@ -84,18 +84,18 @@ const Footer = () => {
     <footer className="w-screen h-auto bg-primary flex flex-col justify-between">
       <div className="w-full h-full pt-8 pb-4 flex flex-col md:flex-row items-center justify-center relative font-noto">
         <div
-          className="flex flex-col justify-between text-btn-text text-base w-full pl-8 pb-4 md:pl-0 md:w-1/3 lg:w-1/4 md:py-4">
+          className="flex flex-col justify-between text-secondary-mild text-base w-full pl-8 pb-4 md:pl-0 md:w-1/3 lg:w-1/4 md:py-4">
           <div className="flex flex-col items-start mb-5">
-                        <span className="font-sati text-5xl cursor-pointer">
-                            <Link to="/">Hooray</Link>
-                        </span>
+            <span className="font-sati text-5xl cursor-pointer">
+              <Link to="/">Hooray</Link>
+            </span>
             <div className="flex mt-5">
               <i
-                className="fab fa-facebook fa-2x cursor-pointer pr-1 hover:fill-current hover:text-secondary hover:transform hover:-translate-y-1.5"/>
+                className="fab fa-facebook fa-2x cursor-pointer pr-1 hover:fill-current hover:text-secondary-dark hover:transform hover:-translate-y-1.5"/>
               <i
-                className="fab fa-instagram fa-2x cursor-pointer px-1 hover:fill-current hover:text-secondary hover:transform hover:-translate-y-1.5"/>
+                className="fab fa-instagram fa-2x cursor-pointer px-1 hover:fill-current hover:text-secondary-dark hover:transform hover:-translate-y-1.5"/>
               <i
-                className="fab fa-line fa-2x cursor-pointer px-1 hover:fill-current hover:text-secondary hover:transform hover:-translate-y-1.5"/>
+                className="fab fa-line fa-2x cursor-pointer px-1 hover:fill-current hover:text-secondary-dark hover:transform hover:-translate-y-1.5"/>
             </div>
           </div>
           <ul className="flex flex-col items-start mt-2 leading-relaxed font-light">
@@ -106,7 +106,7 @@ const Footer = () => {
                   href="https://goo.gl/maps/yPkxiKtsQvrjLbcK6"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="no-underline hover:text-secondary"
+                  className="no-underline hover:text-secondary-dark"
                 >
                   台北市中山路四段999巷3號6樓
                 </a>
@@ -123,36 +123,36 @@ const Footer = () => {
             <li className="inline-block">
               <i className="far fa-envelope mr-2"/>
               <span>
-                <a href="mailto:customer@hooray.tw" className="no-underline hover:text-secondary">
+                <a href="mailto:customer@hooray.tw" className="no-underline hover:text-secondary-dark">
                   customer@hooray.tw
                 </a>
               </span>
             </li>
           </ul>
         </div>
-        <div className="text-btn-text w-full md:w-1/2 lg:w-2/5">
+        <div className="text-secondary-mild w-full md:w-1/2 lg:w-2/5">
           <ul
-            className="flex justify-center divide-x divide-solid divide-primary w-full my-6 sm:mb-12 m-auto text-left text-sm xs:text-base md:text-xl list-none font-light">
-            <li className="cursor-pointer px-1 xs:px-3 hover:text-secondary">
+            className="flex justify-center divide-x divide-solid divide-secondary-light w-full my-6 sm:mb-12 m-auto text-left text-sm xs:text-base md:text-xl list-none font-light">
+            <li className="cursor-pointer px-1 xs:px-3 hover:text-secondary-dark">
               <Link to="/about" onClick={scrollTop}>品牌介紹</Link>
             </li>
-            <li className="cursor-pointer px-1 xs:px-3 hover:text-secondary">
+            <li className="cursor-pointer px-1 xs:px-3 hover:text-secondary-dark">
               <Link to="/news" onClick={scrollTop}>最新消息</Link>
             </li>
-            <li className="cursor-pointer px-1 xs:px-3 hover:text-secondary">
+            <li className="cursor-pointer px-1 xs:px-3 hover:text-secondary-dark">
               <Link to="/team" onClick={scrollTop}>團隊</Link>
             </li>
-            <li className="cursor-pointer px-1 xs:px-3 hover:text-secondary">
+            <li className="cursor-pointer px-1 xs:px-3 hover:text-secondary-dark">
               <Link to="/gallery" onClick={scrollTop}>作品</Link>
             </li>
             <li
-              className="cursor-pointer px-1 xs:px-3 hover:text-secondary"
+              className="cursor-pointer px-1 xs:px-3 hover:text-secondary-dark"
               onClick={() => setIsModalOpen(true)}
             >
               預約查詢
             </li>
           </ul>
-          <div className="inline-block m-auto bg-secondary rounded-full pl-4">
+          <div className="inline-block m-auto bg-secondary-light rounded-full pl-4">
             <input
               id="subscriptions"
               name="subscriptions"
@@ -161,7 +161,7 @@ const Footer = () => {
               className="border-0 bg-transparent focus:outline-none text-black w-36 xs:w-48 sm:w-72"
             />
             <button
-              className="bg-btn-primary py-2.5 px-3 rounded-tr-full rounded-br-full"
+              className="bg-secondary-dark py-2.5 px-3 rounded-tr-full rounded-br-full"
             >
               訂閱
             </button>
@@ -169,7 +169,7 @@ const Footer = () => {
         </div>
       </div>
       <div className="w-full h-auto flex items-center justify-center border-t border-gray-600">
-        <span className="text-center text-btn-text py-3 font-thin">Copyright © 2021 HOORAY, All right reserved.</span>
+        <span className="text-center text-secondary-mild py-3 font-thin">Copyright © 2021 HOORAY, All right reserved.</span>
       </div>
       {
         isModalOpen &&

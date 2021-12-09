@@ -5,14 +5,14 @@
 @tailwind screens;
 
 .btn-lg {
-    @apply px-12 py-3.5 text-btn-text bg-btn-primary hover:ring-2 hover:ring-btn-primary hover:text-secondary;
+    @apply px-12 py-3.5 text-secondary-mild bg-secondary-dark hover:ring-2 hover:ring-secondary-dark hover:text-secondary-dark;
     @apply xs-max:px-6;
 }
 
 .btn-ripple {
-    @apply w-16 h-16 rounded-full bg-secondary text-secondary flex items-center justify-center
-           hover:bg-btn-primary hover:text-btn-text cursor-pointer
-           animate-ripple transition duration-700 ease-linear;
+    @apply w-16 h-16 rounded-full bg-secondary-light text-secondary-dark flex items-center justify-center
+    hover:bg-secondary-dark hover:text-secondary-mild cursor-pointer
+    animate-ripple transition duration-700 ease-linear;
 }
 
 .gallery-bg {

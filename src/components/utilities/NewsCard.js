@@ -10,10 +10,10 @@ const NewsCard = (props) => {
         source={props.source.image}
         width='w-full'
         height='h-[300px]'
-        backgroundFeature='bg-cover cursor-pointer filter brightness-75 hover:brightness-150'
+        backgroundFeature='bg-cover filter brightness-75 hover:brightness-150'
         position=''
       />
-      <h4 className="text-left font-medium text-xl w-[95%] py-4 break-all cursor-pointer hover:text-secondary">
+      <h4 className="text-left font-medium text-xl w-[95%] py-4 break-all cursor-pointer hover:text-secondary-dark">
         <Link className="no-underline" to={`/news/${props.source.postId}`}>{props.source.title}</Link>
       </h4>
       <div className="flex justify-around font-light w-full">
