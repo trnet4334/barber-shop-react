@@ -20,7 +20,7 @@ const Pricing = () => {
         service.detail.map((item, index) =>
           <li
             key={item.translation}
-            className="text-xl text-secondary-mild leading-loose odd:bg-list-item px-8 py-1.5"
+            className="text-xl text-secondary-mild leading-loose odd:bg-dark px-8 py-1.5"
           >
             <div className="flex justify-between items-center mb-1">
               <span className="text-base md:text-lg">{item.name}</span>

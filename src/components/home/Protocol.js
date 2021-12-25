@@ -11,7 +11,7 @@ const Protocol = () => {
 
   return (
     <section
-      className="w-screen lg:min-h-screen h-auto py-16 lg:pt-16 md:pb-0 bg-background-img-2 md:bg-background-img bg-center bg-cover bg-secondary-light text-primary">
+      className="w-screen h-auto py-16 lg:pt-16 md:pb-0 bg-background-img-2 md:bg-background-img bg-center bg-cover bg-secondary-light text-primary">
       <div className="w-full h-1/12 pb-8">
         <h4 className="text-base font-base leading-relaxed text-center text-secondary-dark">Why choose us</h4>
         <h2 className="text-3xl md:text-4xl text-center">我們是您最好的選擇</h2>

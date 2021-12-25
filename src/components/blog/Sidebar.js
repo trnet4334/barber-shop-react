@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {blogPosts} from "../../common/pageContent";
 import {Link} from "react-router-dom";
+import {scrollTop} from "../../common/pageScroll";
 
 const Sidebar = () => {
   const [posts, setPosts] = useState([])
@@ -21,7 +22,13 @@ const Sidebar = () => {
               >
                 <i className="fas fa-angle-right fa-2x text-secondary-mild"/>
                 <p className="text-secondary-mild font-light break-all text-left ml-2">
-                  <Link className="no-underline" to={`/news/${item.postId}`}>{item.title}</Link>
+                  <Link
+                    className="no-underline"
+                    onClick={scrollTop}
+                    to={`/news/${item.postId}`}
+                  >
+                    {item.title}
+                  </Link>
                 </p>
               </div>
             )}
@@ -40,6 +47,9 @@ const Sidebar = () => {
           <div
             className="bg-gallery-img-5 bg-cover bg-top brightness-[0.45] filter hover:brightness-110 w-[125px] h-[125px] lg:w-[150px] lg:h-[150px]"/>
         </div>
+        <button className="btn-lg hover:bg-transparent mt-5">
+          <Link to="/gallery" className="no-underline" onClick={scrollTop}>更多作品</Link>
+        </button>
       </div>
       <div className="w-full h-auto p-10 divide-y divide-secondary-dark bg-primary text-secondary-mild mt-6">
         <h2 className="text-2xl pb-5">Follow us</h2>

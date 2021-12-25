@@ -1,8 +1,8 @@
-import React, { useState, useEffect,useCallback } from "react";
+import React, { useState, useEffect } from "react";
 import {db} from "../common/firebase";
 
 
-const PostContext = React.createContext(undefined)
+export const PostContext = React.createContext(undefined)
 
 export const PostProvider = (props) => {
   // Store post data in state
@@ -35,3 +35,4 @@ export const PostProvider = (props) => {
     </PostContext.Provider>
   )
 }
+

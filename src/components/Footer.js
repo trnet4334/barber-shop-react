@@ -1,83 +1,158 @@
-import React, {useState} from "react";
+import React, {useRef, useState} from "react";
 import {Link} from "react-router-dom";
 import Modal from "./utilities/Modal";
+import {scrollTop} from "../common/pageScroll";
+import {db} from "../common/firebase";
+import dayjs from "dayjs";
 
 const Footer = () => {
   const [isModalOpen, setIsModalOpen] = useState(false)
-  const [isDataFetched, setIsDataFetched] = useState(true)
+  const [isDataFetched, setIsDataFetched] = useState(false)
+  const [isOrderExist, setIsOrderExist] = useState(false)
+  const [searchBtnAvailable, setSearchBtnAvailable] = useState(true)
+  const [isFieldValid, setIsFieldValid] = useState(true)
+  const [searchResult, setSearchResult] = useState([])
+  const orderIdRef = useRef('')
+  const phoneNumRef = useRef('')
+
+  // Fetch data with selected order ID and phone number
+  const handleOrderSearch = async (event) => {
+    event.preventDefault();
+    const data = []
+    const id = orderIdRef.current.value.toString().trim().toUpperCase()
+    const phoneNum = phoneNumRef.current.value.toString().trim()
+
+    // Check if the input is blank.
+    const isBlank = (str) => {
+      return (!str || /^\s*$/.test(str))
+    }
+    // Check if the mobile number is valid
+    const isMobileValid = (str) => {
+      return /^09[0-9]{8}$/.test(str)
+    }
+
+    if (!isBlank(id) && !isBlank(phoneNum)) {
+      if (isMobileValid(phoneNum)) {
+        const snapshot = await db.collection('reservations')
+          .where('orderID', '==', id)
+          .where('phoneNum', '==', phoneNum)
+          .get()
+        await snapshot.forEach(doc => data.push({id: doc.id, data: doc.data()}))
+        await setIsDataFetched(true)
+      } else {
+        setIsFieldValid(false)
+      }
+
+      if (data.length > 0) {
+        setSearchResult(data)
+        setIsOrderExist(true)
+      }
+    } else {
+      window.alert('請完成所有欄位填寫。')
+    }
+  }
+
+  setTimeout(() => {
+    setSearchBtnAvailable(false)
+  }, 2500)
+
   const Title = () => (
     <h3 className="text-3xl font-medium text-primary">
       預約查詢
     </h3>
   )
-  const Content = () => (
+  const Content = (props) => (
     <React.Fragment>
-      {isDataFetched ?
-        <div className="relative px-8 py-3 flex-auto">
-          <ul className="leading-[2.5rem] min-w-[250px]">
-            <li className="block flex">
-              <span className="font-bold">姓名：</span>
-              <p>John Doe</p>
-            </li>
-            <li className="block flex">
-              <span className="font-bold">預約時間：</span>
-              <p>2021-12-01</p>
-            </li>
-            <li className="block flex">
-              <span className="font-bold">預約設計師：</span>
-              <p>Ryan</p>
-            </li>
-            <li className="block flex">
-              <span className="font-bold">預約項目：</span>
-              <p>剪髮</p>
-            </li>
-          </ul>
-        </div>
-        :
+      {!isDataFetched ?
         <div className="relative px-8 py-4 flex-auto">
           <label className="block flex items-center justify-start">
             <span className="w-[125px] text-left">訂單編號</span>
             <input
               type="text"
+              name="orderID"
+              ref={orderIdRef}
+              required
               className="mt-3 block w-[150px] text-primary rounded-md bg-gray-200 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0"
             />
           </label>
           <label className="block flex items-center justify-start">
-            <span className="w-[125px] text-left">手機後三碼</span>
+            <span className="w-[125px] text-left">手機號碼</span>
             <input
               type="text"
+              name="phoneNum"
+              ref={phoneNumRef}
+              required
               className="mt-3 block w-[150px] text-primary rounded-md bg-gray-200 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0"
             />
           </label>
+          <span className={`${isFieldValid ? 'hidden' : 'w-full text-right text-sm text-red-900 ml-24'}`}>請輸入正確的手機號碼</span>
         </div>
+        :
+        isOrderExist ?
+          <div className="relative px-8 py-3 flex-auto">
+            <ul className="leading-[2.5rem] min-w-[250px]">
+              <li className="block flex">
+                <span className="font-bold">姓名：</span>
+                <p>{props.info.data.name}</p>
+              </li>
+              <li className="block flex">
+                <span className="font-bold">預約編號：</span>
+                <p>{props.info.data.orderId}</p>
+              </li>
+              <li className="block flex">
+                <span className="font-bold">預約時間：</span>
+                <p>{dayjs.unix(props.info.data.reservedDate.seconds).format('YYYY/MM/DD HH:mm')}</p>
+              </li>
+              <li className="block flex">
+                <span className="font-bold">預約設計師：</span>
+                <p>{props.info.data.stylists}</p>
+              </li>
+              <li className="block flex">
+                <span className="font-bold">預約項目：</span>
+                <p>{props.info.data.service}</p>
+              </li>
+            </ul>
+          </div>
+          :
+          <div className="relative px-8 py-3 flex-auto">
+            <div className="min-w-[250px] min-h-[100px] flex flex-col justify-center">
+              <p className="text-2xl text-center font-bold">查無預約記錄</p>
+            </div>
+          </div>
       }
     </React.Fragment>
 
   )
-  const Buttons = () => (
-    <React.Fragment>
-      <button
-        className={`${isDataFetched ? 'bg-red-700' : 'bg-green-700'} text-white font-medium uppercase text-sm px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-2 mb-1`}
-        type="button">
-        {isDataFetched ? '取消預約' : '查詢'}
-      </button>
-      <button
-        className="text-primary background-transparent font-medium uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1"
-        type="button"
-        onClick={() => setIsModalOpen(false)}
-      >
-        關閉
-      </button>
-    </React.Fragment>
-  )
-
-  // Top: window position to the page top
-  // Behavior: page scroll style
-  const scrollTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth"
-    })
+  const Buttons = () => {
+    return (
+      <React.Fragment>
+        <button
+          className={`${!isDataFetched ? 'bg-green-700 disabled:opacity-50' : isOrderExist ? 'bg-red-700 disabled:opacity-50' : 'hidden'} 
+          text-white font-medium uppercase text-sm px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-2 mb-1`}
+          type="button"
+          onClick={handleOrderSearch}
+          disabled={searchBtnAvailable}
+        >
+          {!isDataFetched ? '查詢' : '取消預約'}
+        </button>
+        <button
+          className="text-primary background-transparent font-medium uppercase px-4 py-1.5
+                     border-[0.1px] rounded border-primary text-sm outline-none
+                     focus:outline-none mr-1 mb-1 hover:bg-primary hover:text-secondary-light"
+          type="button"
+          onClick={() => {
+            setIsModalOpen(false)
+            setIsDataFetched(false)
+            setIsOrderExist(false)
+            setSearchBtnAvailable(true)
+            setIsFieldValid(true)
+            setSearchResult([])
+          }}
+        >
+          關閉
+        </button>
+      </React.Fragment>
+    )
   }
 
   return (
@@ -169,15 +244,23 @@ const Footer = () => {
         </div>
       </div>
       <div className="w-full h-auto flex items-center justify-center border-t border-gray-600">
-        <span className="text-center text-secondary-mild py-3 font-thin">Copyright © 2021 HOORAY, All right reserved.</span>
+        <span
+          className="text-center text-secondary-mild py-3 font-thin">Copyright © 2021 HOORAY, All right reserved.</span>
       </div>
       {
         isModalOpen &&
         <Modal
           title={<Title/>}
-          content={<Content/>}
+          content={<Content info={searchResult[0]}/>}
           buttons={<Buttons/>}
-          onClose={() => setIsModalOpen(false)}
+          onClose={() => {
+            setIsModalOpen(false)
+            setIsDataFetched(false)
+            setIsOrderExist(false)
+            setSearchBtnAvailable(true)
+            setIsFieldValid(true)
+            setSearchResult([])
+          }}
         />
       }
     </footer>

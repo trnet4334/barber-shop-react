@@ -3,6 +3,15 @@ import Image from "./Image";
 import {Link} from "react-router-dom";
 
 const NewsCard = (props) => {
+  // Top: window position to the page top
+  // Behavior: page scroll style
+  const scrollTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    })
+  }
+
   return (
     <div className="m-auto mt-0 mb-5 md-r:m-auto xl:mx-2.5 xs-max:w-[300px] md-r:w-[335px] w-[375px]">
       <Image
@@ -14,7 +23,13 @@ const NewsCard = (props) => {
         position=''
       />
       <h4 className="text-left font-medium text-xl w-[95%] py-4 break-all cursor-pointer hover:text-secondary-dark">
-        <Link className="no-underline" to={`/news/${props.source.postId}`}>{props.source.title}</Link>
+        <Link
+          className="no-underline"
+          onClick={scrollTop}
+          to={`/news/${props.source.postId}`}
+        >
+          {props.source.title}
+        </Link>
       </h4>
       <div className="flex justify-around font-light w-full">
         <div className="flex items-center">
