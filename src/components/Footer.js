@@ -1,19 +1,24 @@
 import React, {useRef, useState} from "react";
 import {Link} from "react-router-dom";
 import Modal from "./utilities/Modal";
+import Toast from "./utilities/Toast";
 import {scrollTop} from "../common/pageScroll";
+import {nanoid} from "nanoid";
 import {db} from "../common/firebase";
 import dayjs from "dayjs";
 
 const Footer = () => {
   const [isModalOpen, setIsModalOpen] = useState(false)
+  const [isOrderCancelled, setIsOrderCancelled] = useState(false)
   const [isDataFetched, setIsDataFetched] = useState(false)
   const [isOrderExist, setIsOrderExist] = useState(false)
   const [searchBtnAvailable, setSearchBtnAvailable] = useState(true)
   const [isFieldValid, setIsFieldValid] = useState(true)
   const [searchResult, setSearchResult] = useState([])
+  const [cancelNotification, setCancelNotification] = useState(false)
   const orderIdRef = useRef('')
   const phoneNumRef = useRef('')
+  const emailRef = useRef('')
 
   // Fetch data with selected order ID and phone number
   const handleOrderSearch = async (event) => {
@@ -22,11 +27,11 @@ const Footer = () => {
     const id = orderIdRef.current.value.toString().trim().toUpperCase()
     const phoneNum = phoneNumRef.current.value.toString().trim()
 
-    // Check if the input is blank.
+    // Check if input is blank.
     const isBlank = (str) => {
       return (!str || /^\s*$/.test(str))
     }
-    // Check if the mobile number is valid
+    // Check if mobile number is valid
     const isMobileValid = (str) => {
       return /^09[0-9]{8}$/.test(str)
     }
@@ -49,6 +54,54 @@ const Footer = () => {
       }
     } else {
       window.alert('請完成所有欄位填寫。')
+    }
+  }
+
+  // Submit email subscription request
+  const handleSubscriptionRequest = async (event) => {
+    event.preventDefault()
+    let id = nanoid(12)
+    let email = emailRef.current.value.toString().trim()
+
+    // Check if email address is valid
+    const isEmailValid = (str) => {
+      return /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(str)
+    }
+    if (isEmailValid(email)) {
+      try {
+        await db.collection('subscriptions').doc(id).set({email: email})
+        await window.location.reload()
+      } catch (error) {
+        console.log(error)
+      }
+    } else {
+      window.alert('請輸入正確的電子郵件')
+    }
+  }
+
+  // Update reservation with selected id
+  const handleCancelOrder = async (event) => {
+    event.preventDefault()
+    let result = window.confirm('確定取消這次預約嗎？')
+    try {
+      if (result) {
+        await db.collection('reservations')
+          .doc(searchResult[0].id.toString())
+          .update({
+            orderStatus: 'Cancelled'
+          })
+        await setCancelNotification(true)
+        await setIsOrderCancelled(true)
+        setTimeout(() => {
+          setCancelNotification(false)
+        }, 4000)
+        setTimeout(() => {
+          setIsModalOpen(false)
+          window.location.reload()
+        }, 6000)
+      }
+    } catch (err) {
+      console.log(err)
     }
   }
 
@@ -85,7 +138,8 @@ const Footer = () => {
               className="mt-3 block w-[150px] text-primary rounded-md bg-gray-200 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0"
             />
           </label>
-          <span className={`${isFieldValid ? 'hidden' : 'w-full text-right text-sm text-red-900 ml-24'}`}>請輸入正確的手機號碼</span>
+          <span
+            className={`${isFieldValid ? 'hidden' : 'w-full text-right text-sm text-red-900 ml-24'}`}>請輸入正確的手機號碼</span>
         </div>
         :
         isOrderExist ?
@@ -97,7 +151,7 @@ const Footer = () => {
               </li>
               <li className="block flex">
                 <span className="font-bold">預約編號：</span>
-                <p>{props.info.data.orderId}</p>
+                <p>{props.info.data.orderID}</p>
               </li>
               <li className="block flex">
                 <span className="font-bold">預約時間：</span>
@@ -121,19 +175,29 @@ const Footer = () => {
           </div>
       }
     </React.Fragment>
-
   )
   const Buttons = () => {
     return (
       <React.Fragment>
         <button
-          className={`${!isDataFetched ? 'bg-green-700 disabled:opacity-50' : isOrderExist ? 'bg-red-700 disabled:opacity-50' : 'hidden'} 
-          text-white font-medium uppercase text-sm px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-2 mb-1`}
+          className={`${!isDataFetched && !isOrderExist ?
+            'bg-green-700 text-white font-medium uppercase text-sm px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-2 mb-1 disabled:opacity-50'
+            : 'hidden'}`}
           type="button"
           onClick={handleOrderSearch}
           disabled={searchBtnAvailable}
         >
-          {!isDataFetched ? '查詢' : '取消預約'}
+          查詢
+        </button>
+        <button
+          className={`${isDataFetched && isOrderExist ?
+            'bg-red-700 text-white font-medium uppercase text-sm px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-2 mb-1 disabled:opacity-50'
+            : 'hidden'}`}
+          type="button"
+          onClick={handleCancelOrder}
+          disabled={isOrderCancelled}
+        >
+          取消預約
         </button>
         <button
           className="text-primary background-transparent font-medium uppercase px-4 py-1.5
@@ -152,6 +216,20 @@ const Footer = () => {
           關閉
         </button>
       </React.Fragment>
+    )
+  }
+
+  const ToastContent = () => {
+    return (
+      <div className="pb-3 bg-green-500 rounded-b-lg break-words text-white flex items-center justify-center">
+        <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="check-circle"
+             className="w-4 h-4 mr-2 fill-current" role="img" xmlns="http://www.w3.org/2000/svg"
+             viewBox="0 0 512 512">
+          <path fill="currentColor"
+                d="M504 256c0 136.967-111.033 248-248 248S8 392.967 8 256 119.033 8 256 8s248 111.033 248 248zM227.314 387.314l184-184c6.248-6.248 6.248-16.379 0-22.627l-22.627-22.627c-6.248-6.249-16.379-6.249-22.628 0L216 308.118l-70.059-70.059c-6.248-6.248-16.379-6.248-22.628 0l-22.627 22.627c-6.248 6.248-6.248 16.379 0 22.627l104 104c6.249 6.249 16.379 6.249 22.628.001z"/>
+        </svg>
+        <p className="text-base font-noto">成功取消預約</p>
+      </div>
     )
   }
 
@@ -229,6 +307,7 @@ const Footer = () => {
           </ul>
           <div className="inline-block m-auto bg-secondary-light rounded-full pl-4">
             <input
+              ref={emailRef}
               id="subscriptions"
               name="subscriptions"
               type="email"
@@ -236,7 +315,8 @@ const Footer = () => {
               className="border-0 bg-transparent focus:outline-none text-black w-36 xs:w-48 sm:w-72"
             />
             <button
-              className="bg-secondary-dark py-2.5 px-3 rounded-tr-full rounded-br-full"
+              className="bg-secondary-dark py-2.5 px-3 rounded-tr-full rounded-br-full opacity-75 hover:opacity-100"
+              onClick={handleSubscriptionRequest}
             >
               訂閱
             </button>
@@ -260,6 +340,16 @@ const Footer = () => {
             setSearchBtnAvailable(true)
             setIsFieldValid(true)
             setSearchResult([])
+          }}
+        />
+      }
+      {
+        cancelNotification &&
+        <Toast
+          color="bg-green-500"
+          content={<ToastContent/>}
+          onClose={() => {
+            setCancelNotification(false)
           }}
         />
       }

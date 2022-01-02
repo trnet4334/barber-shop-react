@@ -7,7 +7,7 @@ import {nanoid} from "nanoid";
 import {stylists, scheduleService, scheduleTime} from "../../common/pageContent";
 
 const Booking = () => {
-  const [isOrderSubmitted, setIsOrderSubmitted] = useState(false)
+  // const [isOrderSubmitted, setIsOrderSubmitted] = useState(false)
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [confirmationInfo, setConfirmationInfo] = useState({
     id: '',
@@ -53,7 +53,7 @@ const Booking = () => {
     try {
       if (!isDateIsValid(fullDate)) window.alert('請重新選擇適當的日期！')
       if (!isMobileValid(formVal.phoneNum)) window.alert('請確認手機號碼是否正確！')
-      if (!isInputBlank(formVal.name) && !isInputBlank(formVal.phoneNum)) {
+      if (!isInputBlank(formVal.name) && !isInputBlank(formVal.phoneNum) && isDateIsValid(fullDate) && isMobileValid(formVal.phoneNum)) {
         let id = nanoid(16)
         await db.collection('reservations').doc(id).set(formVal)
         await setConfirmationInfo({id: formVal.orderID, date: fullDate.toString()})
@@ -72,11 +72,16 @@ const Booking = () => {
     </h3>
   )
 
-  // TODO: styling
   const Content = () => (
-    <div>
-      <span>{confirmationInfo.id}</span>
-      <span>{confirmationInfo.date}</span>
+    <div className="min-h-[100px] p-10 font-noto flex justify-center items-center">
+      <ul>
+        <li>
+          <p className="text-lg leading-loose"><b className="text-xl">預約編號：</b> {confirmationInfo.id}</p>
+        </li>
+        <li>
+          <p className="text-lg leading-loose"><b className="text-xl">預約時間：</b> {dayjs(confirmationInfo.date).format('YYYY/MM/DD HH:00')}</p>
+        </li>
+      </ul>
     </div>
   )
 
@@ -183,6 +188,7 @@ const Booking = () => {
             content={<Content/>}
             onClose={() => {
               setIsModalOpen(false)
+              setConfirmationInfo({id: '', date: ''})
               window.location.reload()
             }}
           />
