@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import Image from "../utilities/Image";
-import {useParams} from "react-router-dom";
+import {useParams, useOutletContext} from "react-router-dom";
 import {getPost} from "../../common/pageContent";
 import {PostContext} from "../../store/postContext";
 
@@ -15,27 +15,32 @@ const SinglePost = () => {
           <h4 className="text-sm text-left font-light text-gray-400">{post.author} / {post.date}</h4>
           <h2 className="text-xl text-left text-primary">{post.title}</h2>
         </div>
-        <p className="text-left break-all font-light">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-          Architecto dolores dolorum ea inventore nam quae reprehenderit, sed similique soluta suscipit? A architecto
-          autem beatae cum deserunt dolores error et excepturi illo impedit, inventore labore odit optio ratione,
-          repudiandae sapiente vel vitae. Harum incidunt laboriosam totam? Lorem ipsum dolor sit amet, consectetur
-          adipisicing elit. Autem cum illo omnis! Aliquam amet dicta doloribus eaque eius eligendi excepturi
-          exercitationem labore mollitia neque non, nulla porro qui soluta vel velit vero. Ad id illo incidunt officia
-          sint unde voluptatibus?</p>
-        <Image
-          source={`bg-primary ${post.image}`}
-          width='w-full'
-          height='h-[325px]'
-          backgroundFeature='bg-cover'
-          position='my-6'
-        />
-        <p className="text-left break-all font-light mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. A
-          cumque delectus distinctio dolor excepturi fuga harum libero molestias, nemo nostrum possimus qui quis quod
-          ratione repudiandae sed, soluta suscipit totam, vero voluptatem. Aut commodi earum explicabo iure maiores
-          molestias optio porro quia sapiente tempora. Assumenda.</p>
-        <p className="text-left break-all font-light mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-          Animi assumenda deserunt distinctio ea excepturi expedita id, in iusto labore maiores mollitia nam officiis
-          possimus quas quod sed sint tenetur velit!</p>
+        <div className="w-full h-auto flex justify-between mb-5">
+          <p className="text-left break-all font-light w-[48%]">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+            Architecto dolores dolorum ea inventore nam quae reprehenderit, sed similique soluta suscipit? A architecto
+            autem beatae cum deserunt dolores error et excepturi illo impedit, inventore labore odit optio ratione,
+            repudiandae sapiente vel vitae. Harum incidunt laboriosam totam? Lorem ipsum dolor sit amet, consectetur
+            adipisicing elit. Autem cum illo omnis! Aliquam amet dicta doloribus eaque eius eligendi excepturi
+            exercitationem labore mollitia neque non, nulla porro qui soluta vel velit vero. Ad id illo incidunt officia
+            sint unde voluptatibus?</p>
+          <Image
+            source={`bg-primary ${post.image}`}
+            width='w-[48%]'
+            height='h-[250px]'
+            backgroundFeature='bg-cover'
+            position=''
+          />
+        </div>
+        <div className="w-full h-auto">
+          <div></div>
+          <p className="text-left break-all font-light mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. A
+            cumque delectus distinctio dolor excepturi fuga harum libero molestias, nemo nostrum possimus qui quis quod
+            ratione repudiandae sed, soluta suscipit totam, vero voluptatem. Aut commodi earum explicabo iure maiores
+            molestias optio porro quia sapiente tempora. Assumenda.</p>
+          <p className="text-left break-all font-light mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+            Animi assumenda deserunt distinctio ea excepturi expedita id, in iusto labore maiores mollitia nam officiis
+            possimus quas quod sed sint tenetur velit!</p>
+        </div>
       </div>
       <div className="w-full flex items-center justify-start pt-5">
         <span className="font-light mr-3">Share:</span>

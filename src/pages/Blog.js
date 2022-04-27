@@ -1,33 +1,37 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState, useContext} from 'react';
 import Sidebar from "../components/blog/Sidebar";
 import {Outlet} from "react-router-dom";
-import {PostProvider} from "../store/postContext";
-import {db} from "../common/firebase";
+import {PostProvider, PostContext} from "../store/postContext";
+// import {db} from "../common/firebase";
+import { getBlogPosts } from "../common/pageContent";
 
 const Blog = () => {
-  const [posts, setPosts] = useState([])
+  // const [posts, setPosts] = useState([])
+  //
+  // useEffect(() => {
+  //   const fetchPosts = async () => {
+  //     try {
+  //       const postRef = db.collection("posts")
+  //       const posts = await postRef.get()
+  //
+  //       let allPosts = [];
+  //       posts.forEach((post) => {
+  //         const data = post.data()
+  //         allPosts.push(data)
+  //       })
+  //
+  //       setPosts(allPosts)
+  //     } catch (err) {
+  //       console.log("error", err)
+  //     }
+  //   }
+  //
+  //   fetchPosts()
+  // }, [])
+  //
+  // console.log(posts)
+  console.log(getBlogPosts())
 
-  useEffect(() => {
-    const fetchPosts = async () => {
-      try {
-        const postRef = db.collection("posts")
-        const posts = await postRef.get()
-
-        let allPosts = [];
-        posts.forEach((post) => {
-          const data = post.data()
-          allPosts.push(data)
-        })
-
-        setPosts(allPosts)
-      } catch (err) {
-        console.log("error", err)
-      }
-    }
-
-    fetchPosts()
-  }, [])
-  console.log(posts)
   return (
     <PostProvider>
       <section className="w-screen h-auto min-h-screen py-16 px-10 lg:p-20 bg-secondary-light">

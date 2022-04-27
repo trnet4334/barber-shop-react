@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import {db} from "../common/firebase";
 
 
-export const PostContext = React.createContext(undefined)
+export const PostContext = React.createContext([])
 
 export const PostProvider = (props) => {
   // Store post data in state

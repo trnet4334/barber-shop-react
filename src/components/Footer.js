@@ -65,7 +65,7 @@ const Footer = () => {
 
     // Check if email address is valid
     const isEmailValid = (str) => {
-      return /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(str)
+      return /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(str)
     }
     if (isEmailValid(email)) {
       try {
@@ -240,7 +240,7 @@ const Footer = () => {
           className="flex flex-col justify-between text-secondary-mild text-base w-full pl-8 pb-4 md:pl-0 md:w-1/3 lg:w-1/4 md:py-4">
           <div className="flex flex-col items-start mb-5">
             <span className="font-sati text-5xl cursor-pointer">
-              <Link to="/">Hooray</Link>
+              <Link to="/" onClick={scrollTop}>Hooray</Link>
             </span>
             <div className="flex mt-5">
               <i

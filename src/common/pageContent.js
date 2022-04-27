@@ -1,3 +1,5 @@
+import { db } from './firebase.js'
+
 // Content for protocol component in home page
 export const protocolList = [
   {
@@ -139,6 +141,24 @@ export const blogPosts = [
   {title: '五月份優惠活動中獎名單', author: 'Tiffany Chiu', date: '05.22.2021', image: 'bg-news-img-5', postId: '20210522'},
   {title: '春季養護攻略，大師來解答', author: 'Ryan Chen', date: '04.08.2021', image: 'bg-news-img-6', postId: '20210408'},
 ]
+
+export const getBlogPosts = async () => {
+  let allPosts = []
+  let temp
+  try {
+    await db.collection("posts")
+      .get()
+      .then(querySnapshot => {
+        querySnapshot.forEach(post => {
+          allPosts.push(post.data())
+        })
+      })
+    console.log(allPosts)
+    return allPosts
+  } catch (error) {
+    console.log("error", error)
+  }
+}
 
 // Get exact post data
 export function getPost(number) {
