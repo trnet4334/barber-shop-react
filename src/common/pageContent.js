@@ -142,22 +142,21 @@ export const blogPosts = [
   {title: '春季養護攻略，大師來解答', author: 'Ryan Chen', date: '04.08.2021', image: 'bg-news-img-6', postId: '20210408'},
 ]
 
-export const getBlogPosts = async () => {
+export const getBlogPosts = () => {
   let allPosts = []
-  let temp
+
   try {
-    await db.collection("posts")
+    db.collection("posts")
       .get()
       .then(querySnapshot => {
         querySnapshot.forEach(post => {
           allPosts.push(post.data())
         })
       })
-    console.log(allPosts)
-    return allPosts
   } catch (error) {
     console.log("error", error)
   }
+  return allPosts
 }
 
 // Get exact post data

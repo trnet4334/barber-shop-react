@@ -1,8 +1,11 @@
 import React, {useState, useEffect} from 'react';
 import NewsCard from "../utilities/NewsCard";
 import {blogPosts} from "../../common/pageContent";
+import {getBlogPosts} from "../../common/pageContent";
 
 const GridPost = () => {
+  // const posts = getBlogPosts()
+
   const [posts, setPosts] = useState([])
   useEffect(() => {
     setPosts([...blogPosts])
